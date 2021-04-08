@@ -1,37 +1,35 @@
-let recipeList = [];
-
-recipeList = [
+let pokemonList = [
     {
-        recipe : "Spaghetti with Meatballs",
-        mealTimeType : "Appetizer",
-        cuisineType: "Italian",
-        mainIngredient: "Pasta"
+        name : "Mew",
+        height: 0.4,
+        type: "Psychic",
+        abilities: "Synchronize"
     },
    {
-        recipe : "Smoked Salmon",
-        mealTimeType : "Dinner",
-        cuisineType: "Around the World",
-        mainIngredient: "Salmon"
+        name : "Butterfree",
+        height: 1.1,
+        type: ["Bug, Flying"],
+        abilities: ["Compound Eyes", "Tinted Lens"]
     }, 
     {
-        recipe : "California Rolls",
-        mealTimeType : "Appetizer",
-        cuisineType: "Japanese",
-        mainIngredient: "Rice"
+        name : "Cyndaquil",
+        height: 0.5,
+        type: "Fire",
+        abilities: ["Flash Fire", "Blaze"]
     }, 
     {
-        recipe : "Dumplings",
-        mealTimeType : "Appetizer",
-        cuisineType: "Asian",
-        mainIngredient: "Flour"
+        name : "Phanpy",
+        height: 0.5,
+        type: "Ground",
+        abilities: ["Sand Veil", "Pick Up"]
     }, 
     {
-        recipe : "New York Cheesecake",
-        mealTimeType : "Dessert",
-        cuisineType: "American",
-        mainIngredient: "Cream Cheese"
+        name : "Totodile",
+        height: 0.6,
+        eggGroup: "Water",
+        abilities: ["Torrent", "Sheer Force"]
     }, 
 
 ]
 
-console.log(recipeList);
+console.log(pokemonList);
