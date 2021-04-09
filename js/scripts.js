@@ -32,4 +32,22 @@ let pokemonList = [
 
 ]
 
-console.log(pokemonList);
+let htmlStart = '<div class="main-container"><div class="center-container">';
+let htmlEnd = '</div></div>';
+
+let myTable = '<table class="table-container"><caption>Pokemon List</caption>'; //setting up table contents and reusing the same variable for the table
+    myTable = myTable + '<tr><th>Name</th><th>Age</th></tr>';
+
+let pokeHeight = '';
+
+    for (var i = 0; i < pokemonList.length; i++){
+        pokeHeight = (pokemonList[i].height >= 1) ? '<span class="huge"> - WOW! That\'s HUGE!</span>' : ''; 
+        myTable = myTable + '<tr><td>' + pokemonList[i].name + '</td><td>' + pokemonList[i].height + pokeHeight + '</td></tr>';
+    }
+
+    myTable = myTable + '</table>';
+    
+let myHTML = htmlStart + myTable + htmlEnd; //concatenating the variables to form my final html
+
+document.write(myHTML);
+

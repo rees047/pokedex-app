@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+  }
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+    color: 	#00008B;
+}
+
+.center-container{
+    width: 40%;
+    margin: 2% auto;
+    background-color: #F0F8FF;
+}
+
+.table-container, .table-container caption, th, td{
+    border: 1px solid #A9A9A9;
+    border-collapse: collapse;
+}
+
+.table-container{
+    width: 100%;
+    text-align: center;
+    line-height: 2em;
+    table-layout : fixed;
+}
+
+.table-container caption{
+    border-bottom: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.table-container tr:not(:first-child):hover{
+    background-color: #00008B;
+    color: #FFFFFF;
+    font-weight: bold;
+}
