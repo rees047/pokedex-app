@@ -75,8 +75,27 @@ let pokemonRepository = (function () {
         pokemonList.push(pokemon);
     }
 
-    function isValidPokemon(pokemon){    
+    function addListItem(pokeObj){
+        let pokeUl = document.querySelector('.pokemon-list');
+        let pokeLi = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokeObj.name;
+        button.classList.add('button-class');
+        /*button.addEventListener('click', function (event) {
+            showDetails(pokeObj);
+        });*/
+        addEvents(button, pokeObj);
+        pokeLi.appendChild(button);
+        pokeUl.appendChild(pokeLi);
+    }
 
+    function addEvents(el, pokeObj){
+        el.addEventListener('click', function (event) {
+            showDetails(pokeObj);
+        });
+    }
+
+    function isValidPokemon(pokemon){   
         let checker = false;
         let baseKeyArr = (pokemonList.length > 0 && pokemon !== null) ? Object.keys(pokemonList[0]) : [];
         let compareKeyArr = (typeof pokemon === 'object' && pokemon !== null) ? Object.keys(pokemon) : [];
@@ -97,9 +116,15 @@ let pokemonRepository = (function () {
     function getAll(){
         return pokemonList;
     }
+
+    function showDetails(pokemon){
+        console.log(pokemon.name);
+    }
   
     return {
         add: add,   
+        addListItem: addListItem,
+        addEvents, addEvents,
         getAll: getAll,
         isValidPokemon: isValidPokemon
     };
@@ -108,7 +133,7 @@ let pokemonRepository = (function () {
 
 //isValidPokemon = checks if key-value pairs are present
 let newPokemon = {name : 'Snom'};        
-    console.log(pokemonRepository.isValidPokemon(newPokemon));
+    //console.log(pokemonRepository.isValidPokemon(newPokemon));
 
     newPokemon = {
         name : "Snom",
@@ -119,13 +144,14 @@ let newPokemon = {name : 'Snom'};
 
     if(pokemonRepository.isValidPokemon(newPokemon)) pokemonRepository.add(newPokemon);
 
-let htmlStart = '<div class="main-container"><div class="center-container">';
+//start of first method
+/*let htmlStart = '<div class="main-container"><div class="center-container">';
 let htmlEnd = '</div></div>';
 
 let myTable = '<table class="table-container"><caption>Pokemon List</caption>'; //setting up table contents and reusing the same variable for the table
     myTable = myTable + '<tr><th>Name</th><th>Age</th></tr>';
 
-let pokeHeight = '';
+let pokeHeight = '';*/ //when using first method, take this out
 
     //for loop
     /*for (var i = 0; i < pokemonList.length; i++){
@@ -134,7 +160,7 @@ let pokeHeight = '';
     }*/
 
     //forEach loop
-    pokemonRepository.getAll().forEach(function(pokeObj) {
+    /*pokemonRepository.getAll().forEach(function(pokeObj) {
         pokeHeight = (pokeObj.height >= 1) ? '<span class="huge"> - WOW! That\'s HUGE!</span>' : ''; 
         myTable = myTable + '<tr><td>' + pokeObj.name + '</td><td>' + pokeObj.height + pokeHeight + '</td></tr>';
     });
@@ -143,5 +169,11 @@ let pokeHeight = '';
     
 let myHTML = htmlStart + myTable + htmlEnd; //concatenating the variables to form my final html
 
-document.write(myHTML);
+document.write(myHTML);*/ //when using first method, take this out
+//end of first method
+
+//start of second method
+pokemonRepository.getAll().forEach(function(pokeObj) {
+    pokemonRepository.addListItem(pokeObj);   
+});
 
