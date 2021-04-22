@@ -8,7 +8,10 @@
         <title>Pokedex App</title>
     </head>
     <body>
-        <ul class="pokemon-list"></ul>
-        <script type="text/javascript" src="js/scripts.js"></script>        
+        <ul class="pokemon-list"></ul> <!-- only enable this when using second method in js -->
+        <!-- <script type="text/javascript" src="js/scripts.js"></script> -->       
+        <script type="text/javascript" src="js/promise-polyfill.js"></script> <!-- enable when using scripts-polyfill.js-->       
+        <script type="text/javascript" src="js/fetch.umd.js"></script> <!-- enable when using scripts-polyfill.js-->          
+        <script type="text/javascript" src="js/scripts-polyfill.js"></script>     
     </body>
 </html>
