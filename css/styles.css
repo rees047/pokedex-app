@@ -52,3 +52,12 @@ ul li {
     color: #00008B;
     outline: none;
 }
+
+#modal-container{
+    display: none;
+}
+
+/* CSS for modal container - add your own desired CSS styles here */
+#modal-container.is-visible{ 
+    display: block;
+}

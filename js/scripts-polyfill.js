@@ -74,6 +74,8 @@ let pokemonRepository = (function () {
             pokemon.imageURL = details.sprites.front_default;
             pokemon.height = details.height;
             pokemon.types =  details.types;
+            pokemon.weight = details.weight;
+            pokemon.abilities = details.abilities;            
         }).catch (function (e) {
             console.error(e);
         });
@@ -84,6 +86,32 @@ let pokemonRepository = (function () {
             console.log(pokemon);
         });
     }
+
+    function showModal(title, text){
+        let modalContainer = document.querySelector('#modal-selector');
+        modalContainer.innerHTML = '' //clear all existing modal content
+
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        //add the new modal content
+        let closeButtonEl = document.createElement('button');
+        closeButtonEl.classList.add('modal-close');
+        closeButtonEl.innerText = 'Close';
+
+        let titleElement = document.createElement('h1');
+        titleElement.innerText = title;
+
+        let contentEl = document.createElement('p');
+        contentEl.innerText = text;
+
+        modal.appendChild(closeButtonEl);
+        modal.appendChild(titleElement);
+        modal.appendChild(contentEl);
+        modal.Container.appendChild(modal);
+
+        modalContainer.classList.add('is-visible');       
+    }
   
     return {
         add: add,   
@@ -92,6 +120,7 @@ let pokemonRepository = (function () {
         getAll: getAll,
         loadList: loadList,
         loadDetails: loadDetails,
+        showModal : showModal,
         isValidPokemon: isValidPokemon
     };
 })();
@@ -101,5 +130,10 @@ pokemonRepository.loadList().then(function(){
     pokemonRepository.getAll().forEach(function(pokeObj) {
         pokemonRepository.addListItem(pokeObj);   
     });
+});
+
+
+document.querySelector('#show-modal').addEventListener('click', () => {
+    pokemonRepository.showModal('Modal title', 'This is the modal content!');
 });
 
