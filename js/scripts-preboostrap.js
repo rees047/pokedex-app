@@ -14,10 +14,9 @@ let pokemonRepository = (function () {
     function addListItem(pokeObj){
         let pokeUl = document.querySelector('.pokemon-list');
         let pokeLi = document.createElement('li');
-        pokeLi.classList.add('list-group-item');
         let button = document.createElement('button');
         button.innerText = pokeObj.name;
-        button.classList.add('btn', 'btn-info');
+        button.classList.add('button-class');
         addEvents(button, pokeObj);
         pokeLi.appendChild(button);
         pokeUl.appendChild(pokeLi);
