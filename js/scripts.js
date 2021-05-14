@@ -11,7 +11,27 @@ let pokemonRepository = (function () {
         pokemonList.push(pokemon);
     }
 
-    function addListItem(pokeObj){
+    function createList(pokeObj){     //for jquery implementation  
+        let mainContainer = $('#main-container');     
+        let ul = '';
+        
+        $(pokeObj).each(function(i,value){
+            let li = $('<li></li>').addClass('list-group-item');
+            let btn = $('<button></button').text(value.name).addClass('btn btn-secondary w-100');
+            addEvents(btn, value);
+            li.append(btn);
+                      
+            if( (i % 15) == 0){  
+                ul = $('<ul></ul>').addClass('pokemon-list list-group col-md col-lg');
+                ul.attr('id', i);                               
+            }
+
+            ul.append(li);                   
+            mainContainer.append(ul);
+        });       
+    }
+
+    function addListItem(pokeObj){       //for vanilla javascript
         let pokeUl = document.querySelector('.pokemon-list');
         let pokeLi = document.createElement('li');
         pokeLi.classList.add('list-group-item');
@@ -23,7 +43,8 @@ let pokemonRepository = (function () {
         pokeUl.appendChild(pokeLi);
     }
 
-    function addEvents(el, pokeObj){
+    function addEvents(el, pokeObj){       
+        el = (el instanceof jQuery) ? el[0] : el       
         el.addEventListener('click', function (event) {
             showDetails(pokeObj);
         });
@@ -185,6 +206,7 @@ let pokemonRepository = (function () {
         add: add,   
         addListItem: addListItem,
         addEvents: addEvents,
+        createList: createList,
         getAll: getAll,
         loadList: loadList,
         loadDetails: loadDetails,
@@ -195,8 +217,9 @@ let pokemonRepository = (function () {
 
 
 pokemonRepository.loadList().then(function(){
-    pokemonRepository.getAll().forEach(function(pokeObj) {
+    /*pokemonRepository.getAll().forEach(function(pokeObj) {
         pokemonRepository.addListItem(pokeObj);   
-    });
+    });*/ //vanilla javascript
+    pokemonRepository.createList(pokemonRepository.getAll()); //jquery implementation
 });
 
