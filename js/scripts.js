@@ -12,6 +12,7 @@ let pokemonRepository = (function () {
     function addListItem(pokeObj){     //for jquery implementation  
         let mainContainer = $('#main-container');     
         let ul = '';
+        let div = '';
       
         $(pokeObj).each(function(i,value){
             let li = $('<li></li>').addClass('list-group-item list-group-item-info');
@@ -25,13 +26,21 @@ let pokemonRepository = (function () {
             addEvents(btn, value);
             li.append(btn);
 
-            if( (i % 15) == 0){  
-                ul = $('<ul></ul>').addClass('pokemon-list list-group col-lg-5');
+            if( (i % 10) == 0){  
+                ul = $('<ul></ul>').addClass('pokemon-list list-group col-lg-3');
                 ul.attr('id', i);   
             }    
+
+            if( (i % 30) == 0){  
+                div = $('<div></div>').addClass('pokemon-list row justify-content-center');
+            }
                       
-            ul.append(li);              
-            mainContainer.append(ul);
+            ul.append(li);    
+            div.append(ul);          
+            mainContainer.append(div);
+                      
+           // ul.append(li);              
+           // mainContainer.append(ul);
 
         });       
     }
