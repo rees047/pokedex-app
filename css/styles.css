@@ -5,19 +5,13 @@
 }
 
 body{
-    font-family: 'Pokemon', Courier, monospace;
     color: 	#34444c; /*#00008B;*/
     background-color: #ffde00;
-    letter-spacing: 4px;
 }
 
 #myModalLabel{
     text-transform: capitalize;
     font-weight: bold;
-}
-
-#modalContent img{
-    width: 50%;
 }
 
 .slogan{
@@ -48,11 +42,13 @@ body{
 }
 
 .pokemon-list button span{
+    font-family: 'Pokemon', Courier, monospace;
     width: 100%;
     background-color: #ffffff;
     display: inline-block;
     color: #34444c;
     padding-bottom: 4px;
+    letter-spacing: 4px;
 }
 
 .pokemon-list li:hover{
