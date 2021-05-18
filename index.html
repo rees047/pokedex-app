@@ -17,9 +17,36 @@
               <h5 class="modal-title" id="myModalLabel">Modal title</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            
             <div class="modal-body">
-              <div id="modalContent"></div>
+              <div class="modal-body">
+
+                <div class="row">
+                  <div class="pokeImg text-center"></div>
+                </div>
+               
+                <div class="row">
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">Info</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats" type="button" role="tab" aria-controls="stats" aria-selected="false">Stats</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="moves-tab" data-bs-toggle="tab" data-bs-target="#moves" type="button" role="tab" aria-controls="moves" aria-selected="false">Moves</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">...</div>
+                    <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">...</div>
+                    <div class="tab-pane fade" id="moves" role="tabpanel" aria-labelledby="moves-tab">...</div>
+                  </div>
+                </div>
+
+              </div>
             </div>
+           
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>

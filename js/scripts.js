@@ -104,35 +104,46 @@ let pokemonRepository = (function () {
 
         //console.log(pokemon);
         $('#myModalLabel').empty().text(title);
-
-        let modalContent = $('#modalContent');
-        modalContent.empty(); //clear all existing modal content        
         
-        let row = $('<div></div>').addClass('row text-center');
-        let col =($('<div>',{'class' : 'col' }));
-        col.append($('<img>',{'src' : pokemon.imageURL, 'alt' : pokemon.name, 'class' : 'img-fluid'}));
-        row.append(col);
-
-        console.log(row);
+        let pokeImg = $('.pokeImg');
+        pokeImg.empty(); //clear all existing modal content   
+        pokeImg.append($('<img>', {'src' : pokemon.imageURL}));
        
-        let contentL = $('<div class="col"></div>');
-        contentL.append($('<p></p>', { 'text' : 'Height (m): ' + pokemon.height }));
-        contentL.append($('<p></p>', { 'text' : 'Weight (lbs): ' + pokemon.weight }));
-        contentL.append($('<p></p>', { 'text' : 'Abilities: '}));  
+        let info = $('#info');
+        info.empty();
+        info.append($('<p></p>', { 'text' : 'Height (m): ' + pokemon.height }));
+        info.append($('<p></p>', { 'text' : 'Weight (lbs): ' + pokemon.weight }));
+        info.append($('<p></p>', { 'text' : 'Abilities: '}));  
 
-        let ul = $('<ul></ul>');      
+        let ul_abilities = $('<ul></ul>');      
         for (var i=0; i<pokemon.abilities.length; i++){
                 let li = ($('<li></li>'))
                 li.text(pokemon.abilities[i].ability.name);
-                ul.append(li);
+                ul_abilities.append(li);
         }
+        info.append(ul_abilities);
 
-        contentL.append(ul);
+        let stats = $('#stats');
+        stats.empty();
+        let ul_stats = $('<ul></ul>');      
+        for (var i=0; i<pokemon.stats.length; i++){           
+                let li = ($('<li></li>'))
+                li.text(pokemon.stats[i].stat.name);
+                ul_stats.append(li);
+        }
+        stats.append(ul_stats);
 
-        let contentR = $('<div></div>', {'class' : 'col text-center'});
-        contentR.append($('<img>',{'src' : pokemon.imageURL, 'alt' : pokemon.name, 'class' : 'img-fluid'}));
+        let moves = $('#moves');
+        moves.empty();
+        let ul_moves = $('<ul></ul>');      
+        for (var i=0; i<pokemon.moves.length; i++){           
+                let li = ($('<li></li>'))
+                li.text(pokemon.moves[i].move.name);
+                ul_moves.append(li);
+        }
+        moves.append(ul_moves);
         
-        modalContent.append(contentL, contentR);
+        //modalContent.append(contentL, contentR);
     }
 
     return {
