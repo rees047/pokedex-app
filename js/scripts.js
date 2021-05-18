@@ -15,7 +15,7 @@ let pokemonRepository = (function () {
         let div = '';
       
         $(pokeObj).each(function(i,value){
-            let li = $('<li></li>').addClass('list-group-item list-group-item-secondary');
+            let li = $('<li></li>').addClass('list-group-item');
             let btn = $('<button></button').addClass('btn btn-light rounded-circle');
             let span = $('<span></span>').text(value.name);
 
@@ -28,8 +28,8 @@ let pokemonRepository = (function () {
             btn.append(span);
             li.append(btn);
 
-            if( (i % 6) == 0){  
-                ul = $('<ul></ul>').addClass('pokemon-list list-group col-sm-4 col-md-4 col-lg-4 col-xl-2');
+            if( (i % 5) == 0){  
+                ul = $('<ul></ul>').addClass('pokemon-list list-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2');
                 ul.attr('id', i);   
             }    
 
@@ -80,11 +80,15 @@ let pokemonRepository = (function () {
         return fetch(url).then(function (response){
             return response.json();
         }).then(function (details){
+            //console.log(details);
+            pokemon.id = details.id;
             pokemon.imageURL = details.sprites.front_default;
             pokemon.height = details.height;
             pokemon.types =  details.types;
             pokemon.weight = details.weight;
             pokemon.abilities = details.abilities;            
+            pokemon.moves = details.moves;
+            pokemon.stats = details.stats;
         }).catch (function (e) {
             console.error(e);
         });
@@ -98,11 +102,18 @@ let pokemonRepository = (function () {
 
     function showModal(title, pokemon){
 
-        console.log(pokemon);
+        //console.log(pokemon);
         $('#myModalLabel').empty().text(title);
 
         let modalContent = $('#modalContent');
-        modalContent.empty(); //clear all existing modal content             
+        modalContent.empty(); //clear all existing modal content        
+        
+        let row = $('<div></div>').addClass('row text-center');
+        let col =($('<div>',{'class' : 'col' }));
+        col.append($('<img>',{'src' : pokemon.imageURL, 'alt' : pokemon.name, 'class' : 'img-fluid'}));
+        row.append(col);
+
+        console.log(row);
        
         let contentL = $('<div class="col"></div>');
         contentL.append($('<p></p>', { 'text' : 'Height (m): ' + pokemon.height }));
@@ -121,7 +132,7 @@ let pokemonRepository = (function () {
         let contentR = $('<div></div>', {'class' : 'col text-center'});
         contentR.append($('<img>',{'src' : pokemon.imageURL, 'alt' : pokemon.name, 'class' : 'img-fluid'}));
         
-        modalContent.append(contentL,contentR);
+        modalContent.append(contentL, contentR);
     }
 
     return {

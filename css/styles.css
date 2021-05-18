@@ -1,7 +1,14 @@
+@font-face {
+    font-family: "Pokemon";
+    src: url("../fonts/pokemon/pokemon_solid.ttf");
+    src: url("../fonts/pokemon/pokemon_solid.ttf") format("truetype");
+}
+
 body{
-    font-family: 'Courier New', Courier, monospace;
-    color: 	#00008B;
+    font-family: 'Pokemon', Courier, monospace;
+    color: 	#34444c; /*#00008B;*/
     background-color: #ffde00;
+    letter-spacing: 4px;
 }
 
 #myModalLabel{
@@ -10,24 +17,23 @@ body{
 }
 
 #modalContent img{
-    width: 100%;
+    width: 50%;
 }
 
 .slogan{
     color: #ffffff;
-    width: 30%;
 }
 
 .pokemon-list li{
     background-color: #003a70;
     margin-top: 1em;
-    border-radius: 2em;
+    border-radius: 1em;
     padding: 1em;
 }
 
 .pokemon-list li:first-child,
 .pokemon-list li:last-child{
-    border-radius: 2em;
+    border-radius: 1em;
 }
 
 .pokemon-list li:last-child{
@@ -35,8 +41,8 @@ body{
 }
 
 .pokemon-list button{
-    height: 10em;
-    width: 10em;
+    height: 9em;
+    width: 9em;
     background-image: url('../images/pokeball_PNG24.png');
     background-size: cover;
 }
@@ -45,8 +51,8 @@ body{
     width: 100%;
     background-color: #ffffff;
     display: inline-block;
-    font-weight: bold;
-    text-transform: uppercase;
+    color: #34444c;
+    padding-bottom: 4px;
 }
 
 .pokemon-list li:hover{
