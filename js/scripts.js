@@ -15,8 +15,9 @@ let pokemonRepository = (function () {
         let div = '';
       
         $(pokeObj).each(function(i,value){
-            let li = $('<li></li>').addClass('list-group-item list-group-item-info');
-            let btn = $('<button></button').text(value.name).addClass('btn btn-light w-100');
+            let li = $('<li></li>').addClass('list-group-item list-group-item-secondary');
+            let btn = $('<button></button').addClass('btn btn-light rounded-circle');
+            let span = $('<span></span>').text(value.name);
 
             btn.attr({
                 'data-bs-toggle':'modal',
@@ -24,15 +25,16 @@ let pokemonRepository = (function () {
             });
            
             addEvents(btn, value);
+            btn.append(span);
             li.append(btn);
 
-            if( (i % 10) == 0){  
-                ul = $('<ul></ul>').addClass('pokemon-list list-group col-lg-3');
+            if( (i % 6) == 0){  
+                ul = $('<ul></ul>').addClass('pokemon-list list-group col-sm-4 col-md-4 col-lg-4 col-xl-2');
                 ul.attr('id', i);   
             }    
 
             if( (i % 30) == 0){  
-                div = $('<div></div>').addClass('pokemon-list row justify-content-center');
+                div = $('<div></div>').addClass('row text-center justify-content-center');
             }
                       
             ul.append(li);    
@@ -96,7 +98,7 @@ let pokemonRepository = (function () {
 
     function showModal(title, pokemon){
 
-        //console.log(pokemon);
+        console.log(pokemon);
         $('#myModalLabel').empty().text(title);
 
         let modalContent = $('#modalContent');
