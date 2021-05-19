@@ -3,7 +3,6 @@ let pokemonRepository = (function () {
     
     let pokemonList = [];
     let apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-    let modalContainer = document.querySelector('#modal-container');
 
     function add(pokemon){
         pokemonList.push(pokemon);
@@ -49,7 +48,7 @@ let pokemonRepository = (function () {
 
     function addEvents(el, pokeObj){         
         el = (el instanceof jQuery) ? el[0] : el       
-        el.addEventListener('click', function (event) {
+        el.addEventListener('click', function () {
             showDetails(pokeObj);
         });
     }
@@ -130,7 +129,7 @@ let pokemonRepository = (function () {
         let infoR = $('#info .info-right');
         infoR.empty();     
         let ul_abilities = $('<ul></ul>');      
-        for (var i=0; i < 4; i++){
+        for (let i=0; i < 4; i++){
             if (pokemon.abilities[i] == undefined) break;
             let li = ($('<li></li>')).addClass('answer');
             li.text(pokemon.abilities[i].ability.name);
@@ -141,7 +140,7 @@ let pokemonRepository = (function () {
 
         let stats = $('#stats tbody');
         stats.empty();     
-        for (var i=0; i<pokemon.stats.length; i++){           
+        for (let i=0; i<pokemon.stats.length; i++){           
                 let tr = ($('<tr></tr>')).addClass('answer');               
                 tr.append($('<td></td>').text(pokemon.stats[i].stat.name));
                 tr.append($('<td></td>').addClass('text-center').text(pokemon.stats[i].base_stat));
@@ -152,7 +151,7 @@ let pokemonRepository = (function () {
         let moves = $('#moves');
         moves.empty();
         let ul_moves = $('<ul></ul>', {'class' : 'list-group list-group-flush'}); 
-        for (var i=0; i< 4; i++){         
+        for (let i=0; i< 4; i++){         
             if (pokemon.moves[i] == undefined) break;
                 let li = ($('<li></li>').addClass('list-group-item list-group-item-danger answer'));
                 li.text(pokemon.moves[i].move.name);
