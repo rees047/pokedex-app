@@ -22,11 +22,11 @@
               <div class="modal-body">
 
                 <div class="row">
-                  <div class="pokeImg text-center"></div>
+                  <div class="pokeImg"></div>
                 </div>
                
                 <div class="row">
-                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">Info</button>
                     </li>
@@ -37,9 +37,28 @@
                       <button class="nav-link" id="moves-tab" data-bs-toggle="tab" data-bs-target="#moves" type="button" role="tab" aria-controls="moves" aria-selected="false">Moves</button>
                     </li>
                   </ul>
+                  
                   <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">...</div>
-                    <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">...</div>
+                    <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                        <div class="row">
+                          <div class="col info-left"></div>
+                          <div class="col info-right"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+                     <table class="table table-striped">                     
+                      <thead>
+                        <tr>
+                          <th>Status</th>
+                          <th>Base Effect</th>
+                          <th>Effort</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                    </div>
+
                     <div class="tab-pane fade" id="moves" role="tabpanel" aria-labelledby="moves-tab">...</div>
                   </div>
                 </div>

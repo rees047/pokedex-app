@@ -89,6 +89,7 @@ let pokemonRepository = (function () {
             pokemon.abilities = details.abilities;            
             pokemon.moves = details.moves;
             pokemon.stats = details.stats;
+            pokemon.type = details.type;
         }).catch (function (e) {
             console.error(e);
         });
@@ -103,45 +104,62 @@ let pokemonRepository = (function () {
     function showModal(title, pokemon){
 
         //console.log(pokemon);
-        $('#myModalLabel').empty().text(title);
+        let myModalLabel =  $('#myModalLabel');
+        myModalLabel.empty().text(title);
+
+        //pokemon type          
+        for (var i=0; i < 3; i++){  
+            if (pokemon.types[i] == undefined) break;
+            let type = $('<span></span>').addClass('badge alert-light').text(pokemon.types[i].type.name);
+            myModalLabel.append(type);
+        }
         
+        //pokemon image
         let pokeImg = $('.pokeImg');
         pokeImg.empty(); //clear all existing modal content   
         pokeImg.append($('<img>', {'src' : pokemon.imageURL}));
        
-        let info = $('#info');
-        info.empty();
-        info.append($('<p></p>', { 'text' : 'Height (m): ' + pokemon.height }));
-        info.append($('<p></p>', { 'text' : 'Weight (lbs): ' + pokemon.weight }));
-        info.append($('<p></p>', { 'text' : 'Abilities: '}));  
+        //pokemon info     
+        let infoL = $('#info .info-left');
+        infoL.empty();     
+        infoL.append( $('<p></p>', { 'text' : 'ID: ', 'class' : 'question'}).append( $('<span></span>', { 'text' : pokemon.id, 'class' : 'answer' }) ) );
+        infoL.append( $('<p></p>', { 'text' : 'Height: ', 'class' : 'question'}).append( $('<span></span>', { 'text' : pokemon.height + 'M', 'class' : 'answer' }) ) );
+        infoL.append( $('<p></p>', { 'text' : 'Weight: ', 'class' : 'question'}).append( $('<span></span>', { 'text' : pokemon.weight + 'LBS', 'class' : 'answer' }) ) );
 
+        //pokemon abilities  
+        let infoR = $('#info .info-right');
+        infoR.empty();     
         let ul_abilities = $('<ul></ul>');      
-        for (var i=0; i<pokemon.abilities.length; i++){
-                let li = ($('<li></li>'))
-                li.text(pokemon.abilities[i].ability.name);
-                ul_abilities.append(li);
+        for (var i=0; i < 4; i++){
+            if (pokemon.abilities[i] == undefined) break;
+            let li = ($('<li></li>')).addClass('answer');
+            li.text(pokemon.abilities[i].ability.name);
+            ul_abilities.append(li);
         }
-        info.append(ul_abilities);
+        infoR.append( $('<p></p>', { 'text' : 'Abilities: '}).append(ul_abilities) );  
+        //infoR.append(ul_abilities);
 
-        let stats = $('#stats');
-        stats.empty();
-        let ul_stats = $('<ul></ul>');      
+        let stats = $('#stats tbody');
+        stats.empty();     
         for (var i=0; i<pokemon.stats.length; i++){           
-                let li = ($('<li></li>'))
-                li.text(pokemon.stats[i].stat.name);
-                ul_stats.append(li);
-        }
-        stats.append(ul_stats);
+                let tr = ($('<tr></tr>')).addClass('answer');               
+                tr.append($('<td></td>').text(pokemon.stats[i].stat.name));
+                tr.append($('<td></td>').addClass('text-center').text(pokemon.stats[i].base_stat));
+                tr.append($('<td></td>').addClass('text-center').text(pokemon.stats[i].effort));
+                stats.append(tr);
+        }        
 
         let moves = $('#moves');
         moves.empty();
-        let ul_moves = $('<ul></ul>');      
-        for (var i=0; i<pokemon.moves.length; i++){           
-                let li = ($('<li></li>'))
+        let ul_moves = $('<ul></ul>', {'class' : 'list-group list-group-flush'}); 
+        for (var i=0; i< 4; i++){         
+            if (pokemon.moves[i] == undefined) break;
+                let li = ($('<li></li>').addClass('list-group-item list-group-item-danger answer'));
                 li.text(pokemon.moves[i].move.name);
                 ul_moves.append(li);
         }
         moves.append(ul_moves);
+
         
         //modalContent.append(contentL, contentR);
     }

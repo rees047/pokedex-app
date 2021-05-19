@@ -54,3 +54,55 @@ body{
 .pokemon-list li:hover{
     background-color: #ff0000;
 }
+
+.pokeImg img{
+    width: 50%;
+}
+
+.pokeImg {
+    background: linear-gradient(
+        to bottom,
+        #fdf7d6,
+        #fdf7d6 50%,
+        #fefae6 50%,
+        #fefae6
+    );
+    background-size: 100% 20px;
+    border-radius: 2em;
+    border: 10px ridge #b0bec5;
+    text-align: center;
+}
+
+#myTab {
+    margin-top: 1em;
+}
+
+#myTab .nav-link{
+    color: #34444c;
+    border-radius: 0;
+    border-top-left-radius: 2em;
+    background-color: #ffcccb ;
+}
+
+#myTab .active{
+    background-color: #dd2c00;
+    color: #ffffff;   
+}
+
+#myTab,
+#myTabContent{
+    font-family: 'Courier';
+}
+
+#myTabContent{
+    border: 1px solid #dd2c00;   
+}
+
+.info-left{
+    background-color: #ffcccb ;
+}
+
+#myTabContent .answer{   
+    font-weight:bold;
+}
+
