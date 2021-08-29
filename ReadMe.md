@@ -12,12 +12,12 @@ The web app should work in both desktop and mobile views.
 
 **DESCRIPTION**: This app takes data from the pokemon website and display the data back to the user
 
-**TECHNOLOGIES**:
-this has been validated using the following:
-index - w3c validation
-css - w3c validation
-javascript - eslint 2.1.20
+**TECHNOLOGIES**:  
+this has been validated using the following:  
+index - w3c validation  
+css - w3c validation  
+javascript - eslint 2.1.20  
 
-dependencies:
-jquery v3.6.0
-bootstrap 5
+dependencies:  
+jquery v3.6.0  
+bootstrap 5  
